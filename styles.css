@@ -1,0 +1,595 @@
+/* Knight Rider Theme CSS */
+:root {
+    --kr-red: #ff0000;
+    --kr-dark-red: #990000;
+    --kr-black: #000000;
+    --kr-gray: #222222;
+    --kr-light-gray: #333333;
+    --kr-text: #cccccc;
+    --kr-highlight: #ff3333;
+    --kr-blue: #00ccff;
+    --kr-green: #00ff00; /* New green color for initializing text */
+    --linkedin-color: #0077b5;
+    --github-color: #2ecc71;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Orbitron', sans-serif;
+    background-color: var(--kr-black);
+    color: var(--kr-text);
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+.kr-background {
+    background-color: var(--kr-black);
+    background-image: linear-gradient(to bottom, rgba(5, 5, 5, 0.8), rgba(0, 0, 0, 0.9)),
+        url('assets/grid-bg.png');
+    background-size: 100px 100px;
+    min-height: 100vh;
+    padding: 2rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+    position: relative;
+    z-index: 5;
+}
+
+/* Scanner Effect */
+.scanner-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: var(--kr-red);
+    box-shadow: 0 0 15px var(--kr-red), 0 0 30px var(--kr-red);
+    animation: scanner-move-vertical 4s infinite ease-in-out;
+    z-index: 2;
+}
+
+@keyframes scanner-move-vertical {
+    0% {
+        top: 0;
+    }
+    45% {
+        top: calc(100vh - 5px);
+    }
+    50% {
+        top: calc(100vh - 5px);
+    }
+    95% {
+        top: 0;
+    }
+    100% {
+        top: 0;
+    }
+}
+
+.scanner-effect {
+    width: 300px;
+    height: 30px;
+    background-color: var(--kr-black);
+    border: 1px solid var(--kr-red);
+    border-radius: 5px;
+    margin: 1rem auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.scanner-light {
+    width: 20px;
+    height: 100%;
+    background: var(--kr-red);
+    position: absolute;
+    left: 0;
+    top: 0;
+    box-shadow: 0 0 10px var(--kr-red), 0 0 20px var(--kr-red);
+    animation: scan-bidirectional 3s infinite ease-in-out;
+}
+
+@keyframes scan-bidirectional {
+    0% {
+        left: 0;
+    }
+    45% {
+        left: calc(100% - 20px);
+    }
+    50% {
+        left: calc(100% - 20px);
+    }
+    95% {
+        left: 0;
+    }
+    100% {
+        left: 0;
+    }
+}
+
+@keyframes scan {
+    0% {
+        left: 0;
+    }
+    100% {
+        left: calc(100% - 20px);
+    }
+}
+
+/* Knight Rider Title Styling */
+.kr-title {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700; /* Make it bolder */
+    font-size: 2.5rem;
+    text-align: center;
+    color: var(--kr-text);
+    text-shadow: 
+        0 0 5px var(--kr-red), /* Red glow */
+        0 0 10px var(--kr-red), /* Stronger red glow */
+        0 0 15px var(--kr-blue), /* Blue accent glow */
+        0 0 20px var(--kr-blue); /* Stronger blue glow */
+    letter-spacing: 5px; /* Wider spacing for dramatic effect */
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    position: relative;
+    animation: knightRiderGlow 3s infinite alternate; /* Add pulsing animation */
+}
+
+/* New animation for Knight Rider glow effect */
+@keyframes knightRiderGlow {
+    0% {
+        text-shadow: 
+            0 0 5px var(--kr-red),
+            0 0 10px var(--kr-red),
+            0 0 15px var(--kr-blue),
+            0 0 20px var(--kr-blue);
+        opacity: 0.9;
+    }
+    50% {
+        text-shadow: 
+            0 0 10px var(--kr-red),
+            0 0 20px var(--kr-red),
+            0 0 25px var(--kr-blue),
+            0 0 30px var(--kr-blue);
+        opacity: 1;
+    }
+    100% {
+        text-shadow: 
+            0 0 5px var(--kr-red),
+            0 0 10px var(--kr-red),
+            0 0 15px var(--kr-blue),
+            0 0 20px var(--kr-blue);
+        opacity: 0.9;
+    }
+}
+
+.kr-text {
+    font-size: 1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.blink {
+    animation: blink 1s infinite;
+    color: var(--kr-red);
+}
+
+@keyframes blink {
+    0%, 49% {
+        opacity: 0;
+    }
+    50%, 100% {
+        opacity: 1;
+    }
+}
+
+/* Card Styling */
+.profile-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.card {
+    width: 100%;
+    max-width: 450px;
+    background-color: var(--kr-gray);
+    border: 2px solid var(--kr-light-gray);
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.1);
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255, 0, 0, 0.05), transparent);
+    pointer-events: none;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(255, 0, 0, 0.3);
+}
+
+.linkedin-card {
+    border-color: var(--linkedin-color);
+}
+
+.github-card {
+    border-color: var(--github-color);
+}
+
+.card-header {
+    background-color: var(--kr-black);
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid var(--kr-red);
+    position: relative;
+    overflow: hidden;
+}
+
+.card-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--kr-red), transparent);
+}
+
+.linkedin-card .card-header {
+    border-bottom-color: var(--linkedin-color);
+}
+
+.linkedin-card .card-header::after {
+    background: linear-gradient(to right, transparent, var(--linkedin-color), transparent);
+}
+
+.github-card .card-header {
+    border-bottom-color: var(--github-color);
+}
+
+.github-card .card-header::after {
+    background: linear-gradient(to right, transparent, var(--github-color), transparent);
+}
+
+.profile-icon {
+    width: 32px;
+    height: 32px;
+    margin-right: 1rem;
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.5));
+}
+
+.card-header h2 {
+    color: white;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.card-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: relative;
+}
+
+.profile-pic {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    border: 2px solid var(--kr-red);
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+}
+
+.linkedin-card .profile-pic {
+    border-color: var(--linkedin-color);
+}
+
+.github-card .profile-pic {
+    border-color: var(--github-color);
+}
+
+.profile-pic img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-info {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.profile-info h3 {
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+}
+
+.profile-info p {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: var(--kr-text);
+}
+
+.profile-stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 1rem 0;
+    padding: 1rem 0;
+    border-top: 1px solid rgba(255, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(255, 0, 0, 0.2);
+}
+
+.linkedin-card .profile-stats {
+    border-color: rgba(0, 119, 181, 0.2);
+}
+
+.github-card .profile-stats {
+    border-color: rgba(46, 204, 113, 0.2);
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--kr-red);
+}
+
+.linkedin-card .stat-value {
+    color: var(--linkedin-color);
+}
+
+.github-card .stat-value {
+    color: var(--github-color);
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--kr-text);
+}
+
+.card-footer {
+    text-align: center;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Knight Rider Button and QR Button */
+.kr-button, .qr-button {
+    display: inline-block;
+    background-color: var(--kr-black);
+    border: 1px solid var(--kr-red);
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.9rem;
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+    text-align: center;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s;
+    z-index: 1;
+}
+
+.kr-button::before, .qr-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 0, 0, 0.4), transparent);
+    transition: all 0.5s;
+    z-index: -1;
+}
+
+.kr-button:hover::before, .qr-button:hover::before {
+    left: 100%;
+}
+
+.linkedin-card .kr-button, .linkedin-card .qr-button {
+    border-color: var(--linkedin-color);
+}
+
+.linkedin-card .kr-button::before, .linkedin-card .qr-button::before {
+    background: linear-gradient(90deg, transparent, rgba(0, 119, 181, 0.4), transparent);
+}
+
+.github-card .kr-button, .github-card .qr-button {
+    border-color: var(--github-color);
+}
+
+.github-card .kr-button::before, .github-card .qr-button::before {
+    background: linear-gradient(90deg, transparent, rgba(46, 204, 113, 0.4), transparent);
+}
+
+.kr-button:hover, .qr-button:hover {
+    box-shadow: 0 0 10px var(--kr-red);
+    transform: translateY(-2px);
+}
+
+.linkedin-card .kr-button:hover, .linkedin-card .qr-button:hover {
+    box-shadow: 0 0 10px var(--linkedin-color);
+}
+
+.github-card .kr-button:hover, .github-card .qr-button:hover {
+    box-shadow: 0 0 10px var(--github-color);
+}
+
+footer {
+    text-align: center;
+    margin-top: 3rem;
+    padding: 1rem;
+    position: relative;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--kr-red), transparent);
+}
+
+/* Popup Overlay */
+.popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background: var(--kr-black);
+    border: 2px solid var(--kr-green);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    width: 400px;
+    box-shadow: 0 0 20px var(--kr-green);
+}
+
+.initializing-text {
+    font-size: 1.5rem;
+    color: var(--kr-green);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    position: relative;
+}
+
+.initializing-dots {
+    animation: blink 1s infinite;
+    color: var(--kr-green);
+}
+
+.scanner-line {
+    width: 100%;
+    height: 2px;
+    background: var(--kr-green);
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    animation: scan-line 3s infinite ease-in-out;
+}
+
+.qr-container {
+    margin: 1rem 0;
+}
+
+.qr-container img {
+    border: 2px solid var(--kr-red);
+    border-radius: 5px;
+    box-shadow: 0 0 10px var(--kr-red);
+}
+
+.close-qr-btn {
+    margin-top: 1rem;
+    border-color: var(--kr-red);
+}
+
+.close-qr-btn::before {
+    background: linear-gradient(90deg, transparent, rgba(255, 0, 0, 0.4), transparent);
+}
+
+.close-qr-btn:hover {
+    box-shadow: 0 0 10px var(--kr-red);
+}
+
+@keyframes scan-line {
+    0% {
+        left: -100%;
+    }
+    50% {
+        left: 100%;
+    }
+    100% {
+        left: -100%;
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .profile-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .card {
+        max-width: 100%;
+    }
+    
+    .kr-title {
+        font-size: 1.8rem;
+    }
+    
+    .scanner-effect {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 5px;
+        height: 100vh;
+        background: var(--kr-red);
+        box-shadow: 0 0 15px var(--kr-red), 0 0 30px var(--kr-red);
+        animation: scanner-move-horizontal 4s infinite ease-in-out;
+        z-index: 2;
+    }
+
+    .popup-content {
+        width: 80%;
+    }
+
+    .card-footer {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
