@@ -10,7 +10,7 @@ For any questions or suggestions, feel free to reach out:
 
 - Name: Sanjana Rathnayake
 - Email: [your-email@example.com]
-- LinkedIn: [Your LinkedIn Profile URL]
+- LinkedIn: [https://www.linkedin.com/in/sanjana-rathnayake-a72238234/]
 - GitHub: [sanjanarathnyke](https://github.com/sanjanarathnyke)
 
 © 2025 Sanjana Rathnayake
